@@ -25,6 +25,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+import org.checkerframework.common.value.qual.IntRange;
+
+
 /**
  * Builds a string from constituent parts providing a more flexible and powerful API
  * than StringBuffer.
@@ -2936,7 +2939,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
 
         /** {@inheritDoc} */
         @Override
-        public int read() {
+        public @IntRange(from=-1, to=65535) int read() {
             if (!ready()) {
                 return -1;
             }
@@ -2945,7 +2948,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
 
         /** {@inheritDoc} */
         @Override
-        public int read(final char[] b, final int off, int len) {
+        public @IntRange(from=-1, to=2147483647) int read(final char[] b, final int off, int len) {
             if (off < 0 || len < 0 || off > b.length
                     || (off + len) > b.length || (off + len) < 0) {
                 throw new IndexOutOfBoundsException();
@@ -3029,7 +3032,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
 
         /** {@inheritDoc} */
         @Override
-        public void write(final int c) {
+        public void write(final @IntRange(from=0, to=65535) int c) {
             StrBuilder.this.append((char) c);
         }
 

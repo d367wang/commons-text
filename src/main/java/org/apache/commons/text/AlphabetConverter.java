@@ -29,6 +29,8 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
 
+import org.checkerframework.common.value.qual.IntRange;
+
 /**
  * <p>
  * Convert from one alphabet to another, with the possibility of leaving certain
