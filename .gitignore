@@ -17,3 +17,5 @@ site-content
 .classpath
 .project
 .externalToolBuilders
+
+*.class

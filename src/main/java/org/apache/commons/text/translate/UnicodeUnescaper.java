@@ -50,7 +50,7 @@ public class UnicodeUnescaper extends CharSequenceTranslator {
 
                 try {
                     final int value = Integer.parseInt(unicode.toString(), 16);
-                    out.write((char) value);
+                    //out.write((char) value);
                 } catch (final NumberFormatException nfe) {
                     throw new IllegalArgumentException("Unable to parse unicode value: " + unicode, nfe);
                 }

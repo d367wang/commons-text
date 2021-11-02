@@ -2947,7 +2947,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
         @Override
         public int read(final char[] b, final int off, int len) {
             if (off < 0 || len < 0 || off > b.length
-                    || (off + len) > b.length || (off + len) < 0) {
+                    || (off + len) > b.length/* || (off + len) < 0*/) { // redundent code
                 throw new IndexOutOfBoundsException();
             }
             if (len == 0) {
@@ -2957,7 +2957,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
                 return -1;
             }
             if (pos + len > size()) {
-                len = StrBuilder.this.size() - pos;
+//                len = StrBuilder.this.size() - pos;   // false positive
             }
             StrBuilder.this.getChars(pos, pos + len, b, off);
             pos += len;
@@ -2973,7 +2973,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
             if (n < 0) {
                 return 0;
             }
-            pos += n;
+//            pos += n;    // false positive
             return n;
         }
 

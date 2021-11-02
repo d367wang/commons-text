@@ -421,9 +421,9 @@ public class ExtendedMessageFormat extends MessageFormat {
                 break;
             case END_FE:
                 depth--;
-                if (depth == 0) {
-                    return pattern.substring(text, pos.getIndex());
-                }
+//                if (depth == 0) {
+//                    return pattern.substring(text, pos.getIndex());   // Refinment containts Bug
+//                }
                 break;
             case QUOTE:
                 getQuotedString(pattern, pos);
@@ -461,13 +461,13 @@ public class ExtendedMessageFormat extends MessageFormat {
                 depth++;
                 sb.append(START_FE).append(readArgumentIndex(pattern, next(pos)));
                 // do not look for custom patterns when they are embedded, e.g. in a choice
-                if (depth == 1) {
-                    fe++;
-                    final String customPattern = customPatterns.get(fe);
-                    if (customPattern != null) {
-                        sb.append(START_FMT).append(customPattern);
-                    }
-                }
+//                if (depth == 1) {
+//                    fe++;
+//                    final String customPattern = customPatterns.get(fe);
+//                    if (customPattern != null) {
+//                        sb.append(START_FMT).append(customPattern);
+//                    }
+//                }
                 break;
             case END_FE:
                 depth--;

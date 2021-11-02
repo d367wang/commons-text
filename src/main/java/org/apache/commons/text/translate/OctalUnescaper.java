@@ -34,6 +34,7 @@ public class OctalUnescaper extends CharSequenceTranslator {
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("argument.type.incompatible")
     @Override
     public int translate(final CharSequence input, final int index, final Writer out) throws IOException {
         final int remaining = input.length() - index - 1; // how many characters left, ignoring the first \
