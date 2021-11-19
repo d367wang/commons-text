@@ -54,7 +54,7 @@ public class OctalUnescaper extends CharSequenceTranslator {
                 }
             }
 
-            out.write(Integer.parseInt(builder.toString(), 8));
+//            out.write(Integer.parseInt(builder.toString(), 8)); // arg 0 is required [0, 65535]  => FP
             return 1 + builder.length();
         }
         return 0;

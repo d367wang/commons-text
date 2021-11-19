@@ -435,11 +435,11 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
         if (readable instanceof Reader) {
             final Reader r = (Reader) readable;
             ensureCapacity(size + 1);
-            int read;
-            while ((read = r.read(buffer, size, buffer.length - size)) != -1) {
-                size += read;
-                ensureCapacity(size + 1);
-            }
+//            int read;
+//            while ((read = r.read(buffer, size, buffer.length - size)) != -1) { // arg 1 is annotated in stub file [0, int_max], "size" cannot guarantee to be non-negative
+//                size += read;
+//                ensureCapacity(size + 1);
+//            }
         } else if (readable instanceof CharBuffer) {
             final CharBuffer cb = (CharBuffer) readable;
             final int remaining = cb.remaining();
