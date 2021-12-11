@@ -434,9 +434,9 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
         final int oldSize = size;
         if (readable instanceof Reader) {
             final Reader r = (Reader) readable;
-            ensureCapacity(size + 1);
+            ensureCapacity(size + 1);   // ensure buffer.length >= size+1
 //            int read;
-//            while ((read = r.read(buffer, size, buffer.length - size)) != -1) { // arg 1 is annotated in stub file [0, int_max], "size" cannot guarantee to be non-negative
+//            while ((read = r.read(buffer, size, buffer.length - size)) != -1) { // arg 2 is annotated in stub file [0, int_max], "buffer.length - size" guarantee to be positive => FP
 //                size += read;
 //                ensureCapacity(size + 1);
 //            }
@@ -2973,7 +2973,7 @@ public class StrBuilder implements CharSequence, Appendable, Serializable, Build
             if (n < 0) {
                 return 0;
             }
-//            pos += n;    // false positive
+//            pos += n;    // implicit narrowing, 0 <= n <= StrBuilder.this.size()  -> false positive
             return n;
         }
 
